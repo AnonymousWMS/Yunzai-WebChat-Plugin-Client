@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebChat v2 Client</title>
+    <!-- 链接 CSS 文件 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 主体内容 -->
+    <main class="main">
+        <!-- 联系人列表 (暂时使用模拟数据填充) -->
+        <aside class="contact-list">
+            <h4>联系人 (模拟)</h4>
+            <div id="contactListContainer">
+                <!-- 联系人列表将由 JS 动态填充 -->
+                 <div class="contact-item active">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="模拟头像"> <!-- Placeholder -->
+                    <div class="contact-info">
+                        <h3 class="contact-name">Yunzai Bot</h3>
+                        <p class="contact-time">...</p>
+                    </div>
+                    <div class="contact-status">
+                        <span class="online">在线</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 右侧聊天区域 -->
+        <section class="chat-area">
+            <!-- WebSocket 连接设置区域 -->
+            <div id="controls" class="connection-controls">
+                <div class="connection-controls-top-bar">
+                    <button id="toggleDetailsBtn">显示连接设置</button>
+                    <div class="connection-buttons">
+                        <button id="connectBtn" class="connect-btn">连接</button>
+                        <button id="disconnectBtn" class="disconnect-btn" disabled>断开</button>
+                        <span id="status">状态: <span id="connectionStatus" class="disconnected">未连接</span></span>
+                    </div>
+                </div>
+                <div id="connectionDetails" style="display: none;">
+                    <label for="wsUrl">WebSocket URL:</label>
+                    <input type="text" id="wsUrl" value="ws://localhost:2537/WebChatPlugin">
+                    <label for="token">Token:</label>
+                    <input type="password" id="token" value="PleaseChangeThisSecretToken_WebChatPlugin">
+                    <label for="userId">User ID (你的标识):</label>
+                    <input type="text" id="userId" value="web_user_123">
+                    <label for="nickname">Nickname (你的昵称):</label>
+                    <input type="text" id="nickname" value="Web User">
+                </div>
+            </div>
+
+            <!-- 聊天内容显示区域 -->
+            <div id="chatContent" class="chat-content">
+                <!-- 消息将由 JS 动态填充 -->
+                <div class="message-item system"><div class="message-content">请点击"连接"按钮连接到 WebSocket 服务器。</div></div>
+            </div>
+
+            <!-- 输入区域 -->
+            <div class="input-area">
+                <!-- 工具栏 (可选) -->
+                <!-- <div class="toolbar"><button>表情</button></div> -->
+                <textarea id="messageInput" class="message-input" placeholder="输入消息..." disabled></textarea>
+                <div class="input-controls">
+                    <button id="sendBtn" class="send-btn" disabled>发送</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 链接 JavaScript 文件 -->
+    <script src="script.js"></script>
+</body>
+</html>
